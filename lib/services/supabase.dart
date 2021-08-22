@@ -40,3 +40,18 @@ void signUp(String email, String password) async {
     runApp(MyApp());
   }
 }
+
+signOut() async {
+  final response = await Supabase.instance.client.auth.signOut();
+
+  if (response.error != null) {
+    print('ERROR OCCURED ON SIGNOUT');
+    print(response.error);
+    return false;
+  } else {
+    deletePreferencesForUser();
+    print('SUCCESSFULLY SIGNED OUT');
+    runApp(SignInWrapper());
+    return true;
+  }
+}

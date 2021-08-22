@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timehub_companion/objects/sign_in.dart';
 import 'package:timehub_companion/services/supabase.dart';
+
+import '../main.dart';
 
 Future<void> sharedPrefs(email, passwd) async {
   SharedPreferences _prefs = await SharedPreferences.getInstance();
@@ -17,9 +18,14 @@ checkPreferencesForUser() async {
   if (_userEmail != null && _userPasswd != null) {
     signIn(_userEmail, _userPasswd);
     print('session recovered');
-    return 1;
+    return true;
   } else {
     print('new session');
-    runApp(SignIn());
+    runApp(SignInWrapper());
   }
+}
+
+deletePreferencesForUser() async {
+  SharedPreferences _prefs = await SharedPreferences.getInstance();
+  _prefs.clear();
 }

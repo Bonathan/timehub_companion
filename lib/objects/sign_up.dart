@@ -11,8 +11,7 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
       backgroundColor: styles.grey,
       body: Column(
         children: [
@@ -75,8 +74,23 @@ class SignUp extends StatelessWidget {
               ),
             ),
           ),
+          Container(
+                margin: EdgeInsets.only(top: 50),
+                child: GestureDetector(
+                  child: Text(
+                    'Sign In',
+                    style: TextStyle(
+                        color: styles.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/');
+                  },
+                ),
+              )
         ],
       ),
-    ));
+    );
   }
 }

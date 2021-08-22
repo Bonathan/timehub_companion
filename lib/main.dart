@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:timehub_companion/objects/account.dart';
+import 'package:timehub_companion/objects/sign_in.dart';
 import 'package:timehub_companion/objects/styles.dart' as styles;
 import 'package:timehub_companion/objects/widgets.dart';
 import 'package:timehub_companion/services/shared_pref.dart';
 //import 'package:timehub_companion/objects/widgets.dart';
 //import 'package:timehub_companion/objects/sign_in.dart';
 import 'package:timehub_companion/services/supabase.dart';
+
+import 'objects/sign_up.dart';
 
 void main() async {
   runApp(InitScreen());
@@ -27,20 +31,25 @@ class InitScreen extends StatelessWidget {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  const MyApp({ Key? key }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Companion',
-      home: MyHomePage(title: 'Companion'),
+      title: 'Timehub Companion',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MyHomePage(),
+        '/account': (context) => AccountOverview(),
+        '/login': (context) => SignIn()
+      },
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key}) : super(key: key);
 
-  final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -56,7 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
           SliverAppBar(
             actions: [
               IconButton(
-                  onPressed: () {}, icon: Icon(Icons.account_circle_outlined))
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/account');
+                  }, icon: Icon(Icons.account_circle_outlined))
             ],
             expandedHeight: 150,
             pinned: true,
@@ -91,6 +102,22 @@ class _MyHomePageState extends State<MyHomePage> {
           ]))
         ],
       ),
+    );
+  }
+}
+
+class SignInWrapper extends StatelessWidget {
+  const SignInWrapper({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Companion Log In',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => SignIn(),
+        '/signup': (context) => SignUp()
+      },
     );
   }
 }
