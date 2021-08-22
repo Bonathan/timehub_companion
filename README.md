@@ -1,16 +1,18 @@
-# timehub_companion
+# timehub companion
+Timehub companion is the mobile app designed to create a seamless experience for your [timehub](https://github.com/Jouhney/timehub). It is designed around timehub and uses the [supabase](https://supabase.io) backend. The companion app is open-source, just like timehub is, but for the communication between the app and timehub there needs to be a backend, hosted in the cloud. That means that the companion app doesn't use a lot of on-device code **but** it is still as privacy respecting as timehub and its features.
 
-A new Flutter project.
+# Features
+| Feature | Description | Status |
+|---------|-------------|--------|
+| to-do   | Integration with the to-do widget for timehub| under development|
+| timehub settings | Change the settings for your timehub device | planned |
+| timehub dashboard | Show internet usage, CPU temperature and other core vitals of your timehub | planned |
 
-## Getting Started
+## Roadmap
+The companion app is currently in beta. Features get added, improved and sometimes even removed without any communication to the community. That should change in the following months, as more features get added and become more stable.
 
-This project is a starting point for a Flutter application.
+# Stand-alone usage
+Timehub companion is usable even without a timehub instance. It is recommended to use it in combination with timehub, as it is built around it.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Development
+The companion app is built using Dart and Flutter, just like timehub. It is meant to be a phone app and is not designed for desktop usage.

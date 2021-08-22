@@ -31,7 +31,7 @@ class InitScreen extends StatelessWidget {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({ Key? key }) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key}) : super(key: key);
 
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -67,7 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
               IconButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/account');
-                  }, icon: Icon(Icons.account_circle_outlined))
+                  },
+                  icon: Icon(Icons.account_circle_outlined))
             ],
             expandedHeight: 150,
             pinned: true,
@@ -107,17 +107,14 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class SignInWrapper extends StatelessWidget {
-  const SignInWrapper({ Key? key }) : super(key: key);
+  const SignInWrapper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Companion Log In',
       initialRoute: '/',
-      routes: {
-        '/': (context) => SignIn(),
-        '/signup': (context) => SignUp()
-      },
+      routes: {'/': (context) => SignIn(), '/signup': (context) => SignUp()},
     );
   }
 }
