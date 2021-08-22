@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:timehub_companion/objects/sign_in.dart';
 import 'package:timehub_companion/objects/styles.dart' as styles;
 import 'package:timehub_companion/objects/widgets.dart';
+import 'package:timehub_companion/services/shared_pref.dart';
 //import 'package:timehub_companion/objects/widgets.dart';
 //import 'package:timehub_companion/objects/sign_in.dart';
 import 'package:timehub_companion/services/supabase.dart';
 
 void main() async {
+  runApp(InitScreen());
   await init();
-  runApp(SignIn());
+  checkPreferencesForUser();
+}
+
+class InitScreen extends StatelessWidget {
+  const InitScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: styles.grey,
+        body: Center(child: CircularProgressIndicator()),
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -54,12 +69,21 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           SliverList(
               delegate: SliverChildListDelegate([
+            Container(
+              height: 50,
+            ),
             GestureDetector(
-              onTap: () {
-                
-              },
+              onTap: () {},
               child: MenuCard(
-                icon: Icons.checklist_outlined,
+                icon: Icons.opacity_rounded,
+                text: 'timehub',
+                teaser: 'Your timehub configuration',
+              ),
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: MenuCard(
+                icon: Icons.done_outline_outlined,
                 text: 'ToDo',
                 teaser: 'Your synced to-do list',
               ),
