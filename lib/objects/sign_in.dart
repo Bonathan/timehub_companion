@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:timehub_companion/objects/sign_up.dart';
 import 'package:timehub_companion/objects/styles.dart' as styles;
 import 'package:timehub_companion/objects/widgets.dart';
 import 'package:timehub_companion/objects/textcontrollers.dart';
 import 'package:timehub_companion/services/supabase.dart';
 
-final TextEditingController confirmPasswdController = TextEditingController();
-
-class SignUp extends StatelessWidget {
-  const SignUp({Key? key}) : super(key: key);
+class SignIn extends StatelessWidget {
+  const SignIn({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,30 +37,19 @@ class SignUp extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     StandardTextField(
-                      controller: signUpEmailController,
+                      controller: signInEmailController,
                       hint: 'E-Mail',
                       inputType: TextInputType.emailAddress,
                     ),
                     StandardTextField(
-                      controller: signUpPasswdController,
+                      controller: signInPasswdController,
                       hint: 'Password',
-                      hidden: true,
-                    ),
-                    StandardTextField(
-                      controller: confirmPasswdController,
-                      hint: 'Confirm your Password',
                       hidden: true,
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        if (confirmPasswdController.text ==
-                            signUpPasswdController.text) {
-                          signUp(signUpEmailController.text,
-                              signUpPasswdController.text);
-                          print('PASSWORDS MATCH');
-                        } else {
-                          print('PASSWORDS DO NOT MATCH');
-                        }
+                        signIn(signInEmailController.text,
+                            signInPasswdController.text);
                       },
                       child: Text(
                         'Sign In',
@@ -75,6 +63,21 @@ class SignUp extends StatelessWidget {
               ),
             ),
           ),
+          Container(
+            margin: EdgeInsets.only(top: 50),
+            child: GestureDetector(
+              child: Text(
+                'Sign Up',
+                style: TextStyle(
+                    color: styles.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w800),
+              ),
+              onTap: () {
+                runApp(SignUp());
+              },
+            ),
+          )
         ],
       ),
     ));

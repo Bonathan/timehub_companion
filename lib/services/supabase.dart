@@ -25,3 +25,15 @@ void signIn(String email, String password) async {
     runApp(MyApp());
   }
 }
+
+void signUp(String email, String password) async {
+  final response = await Supabase.instance.client.auth.signUp(email, password);
+
+  if (response.error != null) {
+    print('error in the supabase signup');
+    print(response.error);
+  } else {
+    print('success');
+    runApp(MyApp());
+  }
+}
